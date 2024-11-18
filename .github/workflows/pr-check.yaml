@@ -26,7 +26,7 @@ jobs:
         run: echo "hello world"
 
   lint-format:
-    if: contains(github.event.pull_request.labels.*.name, 'area/ci') || ${{ !github.event.pull_request.draft }} 
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'area/ci') || !github.event.pull_request.draft }} 
     name: linter, formatters
     runs-on: ubuntu-24.04
     steps:
