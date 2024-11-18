@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   windows:
-    if: ${{ !github.event.pull_request.draft }}
+    if: contains(github.event.pull_request.labels.*.name, 'area/ci') || ${{ !github.event.pull_request.draft }} 
     name: Windows
     runs-on: windows-2022
     steps:
@@ -19,7 +19,7 @@ jobs:
         run: echo "hello world"
 
   linux:
-    if: ${{ !github.event.pull_request.draft }}
+    if: contains(github.event.pull_request.labels.*.name, 'area/ci') || ${{ !github.event.pull_request.draft }} 
     name: Linux
     runs-on: ubuntu-24.04
     steps:
@@ -27,7 +27,7 @@ jobs:
         run: echo "hello world"
 
   lint-format:
-    if: ${{ !github.event.pull_request.draft }}
+    if: contains(github.event.pull_request.labels.*.name, 'area/ci') || ${{ !github.event.pull_request.draft }} 
     name: linter, formatters
     runs-on: ubuntu-24.04
     steps:
