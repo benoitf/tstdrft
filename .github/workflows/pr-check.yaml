@@ -11,7 +11,6 @@ concurrency:
 
 jobs:
   windows:
-    if: contains(github.event.pull_request.labels.*.name, 'area/ci') || ${{ !github.event.pull_request.draft }} 
     name: Windows
     runs-on: windows-2022
     steps:
@@ -19,7 +18,7 @@ jobs:
         run: echo "hello world"
 
   linux:
-    if: contains(github.event.pull_request.labels.*.name, 'area/ci') || ${{ !github.event.pull_request.draft }} 
+    if: ${{ !github.event.pull_request.draft }} 
     name: Linux
     runs-on: ubuntu-24.04
     steps:
